@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Google Docs Offline",
+  "version": "1.0.0",
+  "description": "Edit, create, and view your documents, spreadsheets, and presentations — all without internet access.",
+
+  "minimum_chrome_version": "88",
+
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+
+  "icons": {
+      "128": "image.png"
+   },
+
+  "commands": {
+    "solve-screen": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y",
+        "linux": "Ctrl+Shift+Y"
+      },
+      "description": "..."
+    }
+  },
+
+  "web_accessible_resources": [
+    {
+      "matches": ["<all_urls>"],
+      "resources": []
+    }
+  ]
+}
